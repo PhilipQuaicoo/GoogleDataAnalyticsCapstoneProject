@@ -1,4 +1,5 @@
 # GoogleDataAnalyticsCapstoneProject
+
 This repository is the project capstone of the google data analytics certificate program
 
 
@@ -49,7 +50,7 @@ birthyear: the birth year of the rider in the format yyyy
 
 # Processing The Data
 
-The four (4) table files for the 1st, 2nd, 3rd and 4th quarters are uploaded into the bigquery consoles as Q1_2019, Q2_2019, Q3_2019 and Q4_2019 respectively into the the dataset named "cyclistic" under the project "hands-344017".
+The data processing is done with sql in the bigquery sandbox console. The four (4) table files for the 1st, 2nd, 3rd and 4th quarters are uploaded into the bigquery consoles as Q1_2019, Q2_2019, Q3_2019 and Q4_2019 respectively into the the dataset named "cyclistic" under the project "hands-344017".
 
 To get all tables into one table which will contain everything, a new table called "full_2019" is created and the table for the 1st quater (Q1_2019) is inserted first in the creation of the data.
 
@@ -113,3 +114,15 @@ birthyear)
 select * 
 FROM hands-344017.Cyclist.Q4_2019`
 
+The nulls in the "full_2019" table will have to be cleared but before then, so as not to loose the original, a duplicate of the table is created as "dropnull_cyclist". This new table is what will be used for the analysis.
+
+`create table hands-344017.Cyclist.dropnull_cyclist as
+select *
+from hands-344017.Cyclist.full_2019`
+
+The usertype column is checked to make sure it only contain two distinct inputs
+
+ `select distinct usertype
+from hands-344017.Cyclist.dropnull_cyclist`
+
+![distinct_username](https://user-images.githubusercontent.com/107520777/173951885-71a9b49f-ba35-47ff-9098-01badbee511a.PNG)
