@@ -114,15 +114,31 @@ birthyear)
 select * 
 FROM hands-344017.Cyclist.Q4_2019`
 
-The nulls in the "full_2019" table will have to be cleared but before then, so as not to loose the original, a duplicate of the table is created as "dropnull_cyclist". This new table is what will be used for the analysis.
-
-`create table hands-344017.Cyclist.dropnull_cyclist as
-select *
-from hands-344017.Cyclist.full_2019`
+***NB: Nulls will not be dropped through the table since a "not null" will be used in the "Where" statement to affect all tables when required.***
 
 The usertype column is checked to make sure it only contain two distinct inputs
 
  `select distinct usertype
-from hands-344017.Cyclist.dropnull_cyclist`
+from hands-344017.Cyclist.full_2019`
 
 ![distinct_username](https://user-images.githubusercontent.com/107520777/173951885-71a9b49f-ba35-47ff-9098-01badbee511a.PNG)
+
+
+# Descriptive Analysis
+
+A new table was created with extra columns created to host the extracted month(mm), day name and hour(hh) part of the "start_time" column and also to cast the "tripduration" column as integer and named as "tripduration_int". analysis will be conducted on this new table.
+
+`create table hands-344017.Cyclist.new_full_2019 as
+select *, 
+cast(tripduration as int64) as triduration_int,
+extract(month from start_time) as start_month,
+FORMAT_DATE("%A", start_time) as start_dayname,
+extract(hour from start_time) as start_hour,
+from `hands-344017.Cyclist.full_2019``
+
+This query is to check for the count of rides ordered for each particular day of the week. The returned table will be plotted to visualise the trend in bike orders for the various days of the week.
+
+`select start_dayname, count(trip_id)
+from `hands-344017.Cyclist.new_full_2019`
+group by start_dayname`
+
