@@ -1,4 +1,4 @@
-# GoogleDataAnalyticsCapstoneProject
+# Google Data Analytics Capstone Project
 
 This repository is the project capstone of the google data analytics certificate program
 
@@ -184,9 +184,9 @@ group by extract(hour from start_time)`
 
 
 
-***The next set of queries are to select the statistics on the stations and how they relate in total and to the various usertypes***
+***The next set of queries provide statistical insight on where various usetypes starts and end their rides***
 
-*total rides per from_station_name*
+*both usertypes rides per from_station_name*
 
 ===Top 5===
 
