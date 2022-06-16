@@ -138,7 +138,9 @@ from `hands-344017.Cyclist.full_2019``
 
 This query is to check for the count of rides ordered for each particular day of the week. The returned table will be plotted to visualise the trend in bike orders for the various days of the week.
 
-`select start_dayname, count(trip_id)
-from `hands-344017.Cyclist.new_full_2019`
-group by start_dayname`
+`select FORMAT_DATE("%A", start_time) as Day_of_Week, count(trip_id) as Number_of_Trips
+from hands-344017.Cyclist.full_2019
+group by FORMAT_DATE("%A", start_time)`
+
+![orders_by_day](https://user-images.githubusercontent.com/107520777/174084279-59470c63-a71e-4055-bde8-e0af0147cd2e.PNG)
 
