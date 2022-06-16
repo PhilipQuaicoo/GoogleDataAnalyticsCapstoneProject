@@ -114,7 +114,7 @@ birthyear)
 select * 
 FROM hands-344017.Cyclist.Q4_2019`
 
-***NB: Nulls will not be dropped through the table since a "not null" will be used in the "Where" statement to affect all tables when required.***
+*NB: Nulls will not be dropped through the table since a "not null" will be used in the "Where" statement to affect all tables when required.*
 
 The usertype column is checked to make sure it only contain two distinct inputs
 
@@ -136,11 +136,169 @@ FORMAT_DATE("%A", start_time) as start_dayname,
 extract(hour from start_time) as start_hour,
 from `hands-344017.Cyclist.full_2019``
 
-This query is to check for the count of rides ordered for each particular day of the week. The returned table will be plotted to visualise the trend in bike orders for the various days of the week.
+***The following queries are to select the count of rides ordered for each particular day of the week and another for months in the year. The returned tables will be plotted to visualise the trend in bike rides as they are grouped.***
+
+*days of the week*
 
 `select FORMAT_DATE("%A", start_time) as Day_of_Week, count(trip_id) as Number_of_Trips
 from hands-344017.Cyclist.full_2019
 group by FORMAT_DATE("%A", start_time)`
 
 ![orders_by_day](https://user-images.githubusercontent.com/107520777/174084279-59470c63-a71e-4055-bde8-e0af0147cd2e.PNG)
+
+*for months of the year*
+
+`select FORMAT_DATE("%B", start_time) as month_of_year, count(trip_id) as Number_of_Trips
+from hands-344017.Cyclist.full_2019
+group by FORMAT_DATE("%B", start_time)`
+
+![order_by_months](https://user-images.githubusercontent.com/107520777/174095342-847c8131-2ae1-4c73-b726-e99252de215a.PNG)
+
+***The next set of queries are to select the statistics on the stations and how they relate in total and to the various usertypes***
+
+*total rides per from_station_name*
+
+===Top 5===
+
+`select count(trip_id) as from_station_rides, from_station_name
+from hands-344017.Cyclist.full_2019
+group by from_station_name
+order by count(trip_id) desc
+limit 5`
+
+![generaltopfromstation](https://user-images.githubusercontent.com/107520777/174107493-8b086bf7-01dd-414c-9fdb-1354f35c4999.PNG)
+
+===Bottom 5===
+
+`select count(trip_id) as from_station_rides, from_station_name
+from hands-344017.Cyclist.full_2019
+group by from_station_name
+order by count(trip_id)
+limit 5`
+
+![generalbuttomfromstation](https://user-images.githubusercontent.com/107520777/174108499-a0462ff7-90b3-4f3d-a7bc-47f392656392.PNG)
+
+*Customer rides per from_station_name*
+
+===Top 5===
+
+`select count(trip_id) as from_station_rides_Cus, from_station_name
+from hands-344017.Cyclist.full_2019
+where usertype = "Customer"
+group by from_station_name
+order by count(trip_id) desc
+limit 5`
+
+![Customertopfromstation](https://user-images.githubusercontent.com/107520777/174115608-b12bd63d-5cbb-4ac7-8259-520c485a6dbb.PNG)
+
+
+===Bottom 5===
+
+`select count(trip_id) as from_station_rides_Cus, from_station_name
+from hands-344017.Cyclist.full_2019
+where usertype = "Customer"
+group by from_station_name
+order by count(trip_id)
+limit 5`
+
+![Customerbottomfromstation](https://user-images.githubusercontent.com/107520777/174117443-35974586-9eec-4559-8979-1166d47c28ad.PNG)
+
+*Subscriber rides per from_station_name*
+
+===Top 5===
+
+`select count(trip_id) as from_station_rides_Sub, from_station_name
+from hands-344017.Cyclist.full_2019
+where usertype = "Subscriber"
+group by from_station_name
+order by count(trip_id) desc
+limit 5`
+
+![Customertopfromstation](https://user-images.githubusercontent.com/107520777/174115608-b12bd63d-5cbb-4ac7-8259-520c485a6dbb.PNG)
+
+===Bottom 5===
+
+`select count(trip_id) as from_station_rides_Sub from_station_name
+from hands-344017.Cyclist.full_2019
+where usertype = "Subscriber"
+group by from_station_name
+order by count(trip_id)
+limit 5`
+
+![Customerbottomfromstation](https://user-images.githubusercontent.com/107520777/174117443-35974586-9eec-4559-8979-1166d47c28ad.PNG)
+
+
+
+*total rides per to_station_name*
+
+===Top 5===
+
+`select count(trip_id) as to_station_rides, to_station_name
+from hands-344017.Cyclist.full_2019
+group by to_station_name
+order by count(trip_id) desc
+limit 5`
+
+
+
+===Bottom 5===
+
+`select count(trip_id) as to_station_rides, to_station_name
+from hands-344017.Cyclist.full_2019
+group by to_station_name
+order by count(trip_id)
+limit 5`
+
+
+
+*Customer rides per to_station_name*
+
+===Top 5===
+
+`select count(trip_id) as to_station_rides_Cus, to_station_name
+from hands-344017.Cyclist.full_2019
+where usertype = "Customer"
+group by to_station_name
+order by count(trip_id) desc
+limit 5`
+
+
+
+
+===Bottom 5===
+
+`select count(trip_id) as to_station_rides_Cus, to_station_name
+from hands-344017.Cyclist.full_2019
+where usertype = "Customer"
+group by to_station_name
+order by count(trip_id)
+limit 5`
+
+
+
+*Subscriber rides per to_station_name*
+
+===Top 5===
+
+`select count(trip_id) as to_station_rides_Sub, to_station_name
+from hands-344017.Cyclist.full_2019
+where usertype = "Subscriber"
+group by to_station_name
+order by count(trip_id) desc
+limit 5`
+
+
+
+
+===Bottom 5===
+
+`select count(trip_id) as to_station_rides_Sub, to_station_name
+from hands-344017.Cyclist.full_2019
+where usertype = "Subscriber"
+group by to_station_name
+order by count(trip_id)
+limit 5`
+
+
+
 
