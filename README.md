@@ -136,23 +136,53 @@ FORMAT_DATE("%A", start_time) as start_dayname,
 extract(hour from start_time) as start_hour,
 from `hands-344017.Cyclist.full_2019``
 
-***The following queries are to select the count of rides ordered for each particular day of the week and another for months in the year. The returned tables will be plotted to visualise the trend in bike rides as they are grouped.***
+***The following queries are to select the count of rides ordered by Customers and Subscribers for each particular day of the week, for months in the year and the hours in a day. The returned tables will be plotted to visualise the trend in bike rides as they are grouped.***
 
-*days of the week*
+*days of the week, Customers*
 
 `select FORMAT_DATE("%A", start_time) as Day_of_Week, count(trip_id) as Number_of_Trips
 from hands-344017.Cyclist.full_2019
+where usertype = "Customer"
 group by FORMAT_DATE("%A", start_time)`
 
-![orders_by_day](https://user-images.githubusercontent.com/107520777/174084279-59470c63-a71e-4055-bde8-e0af0147cd2e.PNG)
+*days of the week, Subscribers*
 
-*for months of the year*
+`select FORMAT_DATE("%A", start_time) as Day_of_Week, count(trip_id) as Number_of_Trips
+from hands-344017.Cyclist.full_2019
+where usertype = "Subscriber"
+group by FORMAT_DATE("%A", start_time)`
+
+
+*months of the year, Customers*
 
 `select FORMAT_DATE("%B", start_time) as month_of_year, count(trip_id) as Number_of_Trips
 from hands-344017.Cyclist.full_2019
+where usertype = "Customer"
 group by FORMAT_DATE("%B", start_time)`
 
-![order_by_months](https://user-images.githubusercontent.com/107520777/174095342-847c8131-2ae1-4c73-b726-e99252de215a.PNG)
+*months of the year, Subscriber*
+
+`select FORMAT_DATE("%B", start_time) as month_of_year, count(trip_id) as Number_of_Trips
+from hands-344017.Cyclist.full_2019
+where usertype = "Subscriber"
+group by FORMAT_DATE("%B", start_time)`
+
+
+*for hours in a day, Customer*
+
+`select distinct extract(hour from start_time) as Hours, count(trip_id) as Trips_by_Hour
+FROM hands-344017.Cyclist.full_2019
+where usertype = "Customer"
+group by extract(hour from start_time)`
+
+*for hours in a day, Subscriber*
+
+`select distinct extract(hour from start_time) as Hours, count(trip_id) as Trips_by_Hour
+FROM hands-344017.Cyclist.full_2019
+where usertype = "Subscriber"
+group by extract(hour from start_time)`
+
+
 
 ***The next set of queries are to select the statistics on the stations and how they relate in total and to the various usertypes***
 
