@@ -134,7 +134,7 @@ cast(tripduration as int64) as triduration_int,
 extract(month from start_time) as start_month,
 FORMAT_DATE("%A", start_time) as start_dayname,
 extract(hour from start_time) as start_hour,
-from `hands-344017.Cyclist.full_2019``
+from hands-344017.Cyclist.full_2019`
 
 ***The following queries are to select the count of rides ordered by Customers and Subscribers for each particular day of the week, for months in the year and the hours in a day. The returned tables will be plotted to visualise the trend in bike rides as they are grouped.***
 
