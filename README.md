@@ -126,13 +126,76 @@ from hands-344017.Cyclist.full_2019`
 
 # Descriptive Analysis
 
-the total number of trips in 2019 per the table schema is 3,818,004 of which the table gives the number of rides per the various usertype using the query
+***the total number of trips in 2019 per the table schema is 3,818,004 of which the table gives the number of rides per the various usertype using the query
 
 ![usertypenumtrips](https://user-images.githubusercontent.com/107520777/174672998-2dd305b5-1882-4345-883f-b1c4e4f10274.PNG)
 
 `select count(trip_id) as num_of_trip, usertype
 from hands-344017.Cyclist.full_2019
 group by usertype`
+
+***the maximumn, minimum and mean trip duration is calculated for the number of trips and trips for the vatious usertypes
+
+*total trips*
+
+===max trip duration, total===
+
+`select max(tripduration)
+from hands-344017.Cyclist.dropnull_cyclist`
+
+===min trip duration, total===
+
+`select min(tripduration)
+from hands-344017.Cyclist.dropnull_cyclist`
+
+===mean trip duration, general===
+
+`select avg(tripduration)
+from hands-344017.Cyclist.dropnull_cyclist`
+
+
+*Subscriber trips*
+
+===max trip duration, subscribers===
+
+`select max(tripduration)
+from hands-344017.Cyclist.dropnull_cyclist
+where usertype = "Subscriber" '
+
+===min trip duration, subscribers===
+
+`select min(tripduration)
+from hands-344017.Cyclist.dropnull_cyclist
+where usertype = "Subscriber" `
+
+===mean trip duration, subscribers===
+
+`select mean(tripduration)
+from hands-344017.Cyclist.dropnull_cyclist
+where usertype = "Subscriber" '
+
+
+*Customer trips*
+
+===max trip duration, Customer===
+
+`select max(tripduration)
+from hands-344017.Cyclist.dropnull_cyclist
+where usertype = "Customer" '
+
+===min trip duration, Customer===
+
+`select min(tripduration)
+from hands-344017.Cyclist.dropnull_cyclist
+where usertype = "Customer" '
+
+===mean trip duration, Customer===
+
+`select mean(tripduration)
+from hands-344017.Cyclist.dropnull_cyclist
+where usertype = "Customer" '
+
+
 
 A new table was created with extra columns created to host the extracted month(mm), day name and hour(hh) part of the "start_time" column and also to cast the "tripduration" column as integer and named as "tripduration_int". analysis will be conducted on this new table.
 
@@ -194,7 +257,7 @@ group by extract(hour from start_time)`
 
 ***The next set of queries provide statistical insight on where various usetypes starts and end their rides***
 
-*both usertypes rides per from_station_name*
+*both usertypes rides per start station name*
 
 ===Top 5===
 
@@ -204,8 +267,6 @@ group by from_station_name
 order by count(trip_id) desc
 limit 5`
 
-![generaltopfromstation](https://user-images.githubusercontent.com/107520777/174107493-8b086bf7-01dd-414c-9fdb-1354f35c4999.PNG)
-
 ===Bottom 5===
 
 `select count(trip_id) as from_station_rides, from_station_name
@@ -214,9 +275,7 @@ group by from_station_name
 order by count(trip_id)
 limit 5`
 
-![generalbuttomfromstation](https://user-images.githubusercontent.com/107520777/174108499-a0462ff7-90b3-4f3d-a7bc-47f392656392.PNG)
-
-*Customer rides per from_station_name*
+*Customer rides per start station name*
 
 ===Top 5===
 
@@ -227,9 +286,6 @@ group by from_station_name
 order by count(trip_id) desc
 limit 5`
 
-![Customertopfromstation](https://user-images.githubusercontent.com/107520777/174115608-b12bd63d-5cbb-4ac7-8259-520c485a6dbb.PNG)
-
-
 ===Bottom 5===
 
 `select count(trip_id) as from_station_rides_Cus, from_station_name
@@ -239,9 +295,7 @@ group by from_station_name
 order by count(trip_id)
 limit 5`
 
-![Customerbottomfromstation](https://user-images.githubusercontent.com/107520777/174117443-35974586-9eec-4559-8979-1166d47c28ad.PNG)
-
-*Subscriber rides per from_station_name*
+*Subscriber rides per start station name*
 
 ===Top 5===
 
@@ -252,8 +306,6 @@ group by from_station_name
 order by count(trip_id) desc
 limit 5`
 
-![Customertopfromstation](https://user-images.githubusercontent.com/107520777/174115608-b12bd63d-5cbb-4ac7-8259-520c485a6dbb.PNG)
-
 ===Bottom 5===
 
 `select count(trip_id) as from_station_rides_Sub from_station_name
@@ -263,11 +315,8 @@ group by from_station_name
 order by count(trip_id)
 limit 5`
 
-![Customerbottomfromstation](https://user-images.githubusercontent.com/107520777/174117443-35974586-9eec-4559-8979-1166d47c28ad.PNG)
 
-
-
-*total rides per to_station_name*
+*total rides per end station name*
 
 ===Top 5===
 
@@ -277,8 +326,6 @@ group by to_station_name
 order by count(trip_id) desc
 limit 5`
 
-
-
 ===Bottom 5===
 
 `select count(trip_id) as to_station_rides, to_station_name
@@ -287,9 +334,7 @@ group by to_station_name
 order by count(trip_id)
 limit 5`
 
-
-
-*Customer rides per to_station_name*
+*Customer rides per end station name*
 
 ===Top 5===
 
@@ -300,9 +345,6 @@ group by to_station_name
 order by count(trip_id) desc
 limit 5`
 
-
-
-
 ===Bottom 5===
 
 `select count(trip_id) as to_station_rides_Cus, to_station_name
@@ -312,9 +354,7 @@ group by to_station_name
 order by count(trip_id)
 limit 5`
 
-
-
-*Subscriber rides per to_station_name*
+*Subscriber rides per end station name*
 
 ===Top 5===
 
@@ -324,9 +364,6 @@ where usertype = "Subscriber"
 group by to_station_name
 order by count(trip_id) desc
 limit 5`
-
-
-
 
 ===Bottom 5===
 
