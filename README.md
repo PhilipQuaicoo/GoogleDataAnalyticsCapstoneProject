@@ -126,7 +126,7 @@ from hands-344017.Cyclist.full_2019`
 
 # Descriptive Analysis
 
-***the total number of trips in 2019 per the table schema is 3,818,004 of which the table gives the number of rides per the various usertype using the query
+***the total number of trips in 2019 per the table schema is 3,818,004 of which the table gives the number of rides per the various usertype using the query***
 
 ![usertypenumtrips](https://user-images.githubusercontent.com/107520777/174672998-2dd305b5-1882-4345-883f-b1c4e4f10274.PNG)
 
@@ -134,7 +134,7 @@ from hands-344017.Cyclist.full_2019`
 from hands-344017.Cyclist.full_2019
 group by usertype`
 
-***the maximumn, minimum and mean trip duration is calculated for the number of trips and trips for the vatious usertypes
+***the maximumn, minimum and mean trip duration is calculated for the number of trips and trips for the vatious usertypes***
 
 *total*
 
