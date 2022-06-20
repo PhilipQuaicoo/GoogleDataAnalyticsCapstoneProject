@@ -126,6 +126,14 @@ from hands-344017.Cyclist.full_2019`
 
 # Descriptive Analysis
 
+the total number of trips in 2019 per the table schema is 3,818,004 of which the table gives the number of rides per the various usertype using the query
+
+![usertypenumtrips](https://user-images.githubusercontent.com/107520777/174672998-2dd305b5-1882-4345-883f-b1c4e4f10274.PNG)
+
+`select count(trip_id) as num_of_trip, usertype
+from hands-344017.Cyclist.full_2019
+group by usertype`
+
 A new table was created with extra columns created to host the extracted month(mm), day name and hour(hh) part of the "start_time" column and also to cast the "tripduration" column as integer and named as "tripduration_int". analysis will be conducted on this new table.
 
 `create table hands-344017.Cyclist.new_full_2019 as
