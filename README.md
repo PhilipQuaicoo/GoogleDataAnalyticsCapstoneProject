@@ -136,64 +136,22 @@ group by usertype`
 
 ***the maximumn, minimum and mean trip duration is calculated for the number of trips and trips for the vatious usertypes
 
-*total trips*
+*total*
 
-===max trip duration, total===
+`select max(tripduration) as Maximum, min(tripduration) as Minimum, avg(tripduration) as Mean
+from hands-344017.Cyclist.full_2019`
 
-`select max(tripduration)
-from hands-344017.Cyclist.dropnull_cyclist`
+*Customers*
 
-===min trip duration, total===
+`select max(tripduration) as Maximum, min(tripduration) as Minimum, avg(tripduration) as Mean
+from hands-344017.Cyclist.full_2019
+where usertype = "Customer"`
 
-`select min(tripduration)
-from hands-344017.Cyclist.dropnull_cyclist`
+*Subscribers*
 
-===mean trip duration, general===
-
-`select avg(tripduration)
-from hands-344017.Cyclist.dropnull_cyclist`
-
-
-*Subscriber trips*
-
-===max trip duration, subscribers===
-
-`select max(tripduration)
-from hands-344017.Cyclist.dropnull_cyclist
-where usertype = "Subscriber" `
-
-===min trip duration, subscribers===
-
-`select min(tripduration)
-from hands-344017.Cyclist.dropnull_cyclist
-where usertype = "Subscriber" `
-
-===mean trip duration, subscribers===
-
-`select mean(tripduration)
-from hands-344017.Cyclist.dropnull_cyclist
-where usertype = "Subscriber" `
-
-
-*Customer trips*
-
-===max trip duration, Customer===
-
-`select max(tripduration)
-from hands-344017.Cyclist.dropnull_cyclist
-where usertype = "Customer" `
-
-===min trip duration, Customer===
-
-`select min(tripduration)
-from hands-344017.Cyclist.dropnull_cyclist
-where usertype = "Customer" `
-
-===mean trip duration, Customer===
-
-`select mean(tripduration)
-from hands-344017.Cyclist.dropnull_cyclist
-where usertype = "Customer" `
+`select max(tripduration) as Maximum, min(tripduration) as Minimum, avg(tripduration) as Mean
+from hands-344017.Cyclist.full_2019
+where usertype = "Subscriber"`
 
 
 
