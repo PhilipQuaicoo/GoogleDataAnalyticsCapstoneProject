@@ -160,7 +160,7 @@ from hands-344017.Cyclist.dropnull_cyclist`
 
 `select max(tripduration)
 from hands-344017.Cyclist.dropnull_cyclist
-where usertype = "Subscriber" '
+where usertype = "Subscriber" `
 
 ===min trip duration, subscribers===
 
@@ -172,7 +172,7 @@ where usertype = "Subscriber" `
 
 `select mean(tripduration)
 from hands-344017.Cyclist.dropnull_cyclist
-where usertype = "Subscriber" '
+where usertype = "Subscriber" `
 
 
 *Customer trips*
@@ -181,19 +181,19 @@ where usertype = "Subscriber" '
 
 `select max(tripduration)
 from hands-344017.Cyclist.dropnull_cyclist
-where usertype = "Customer" '
+where usertype = "Customer" `
 
 ===min trip duration, Customer===
 
 `select min(tripduration)
 from hands-344017.Cyclist.dropnull_cyclist
-where usertype = "Customer" '
+where usertype = "Customer" `
 
 ===mean trip duration, Customer===
 
 `select mean(tripduration)
 from hands-344017.Cyclist.dropnull_cyclist
-where usertype = "Customer" '
+where usertype = "Customer" `
 
 
 
