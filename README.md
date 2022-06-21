@@ -340,5 +340,22 @@ order by count(trip_id)
 limit 5`
 
 
+# Visualisation of Data
+
+***Google sheets was used to plot various graphs of the exported tables to visualize trands in how various usertypes patronize the services. Comparison was of days of the week, months in the year 2019 and hours in a day.***
+
+*The days of the week*
+
+![TRIPS ON WEEKDAYS, 2019](https://user-images.githubusercontent.com/107520777/174809210-cedb35f0-4a89-4f4d-90e1-d5c4c1fd0e8d.png)
+
+*Months in the year, 2019*
+
+![TRIPS PER MONTHS, 2019](https://user-images.githubusercontent.com/107520777/174809333-6cf380a0-8d23-438d-b349-4885ca35891e.png)
+
+*Hours in a day*
+
+![TRIP BY HOURS OF THE DAY, 2019](https://user-images.githubusercontent.com/107520777/174809441-be4237c1-6b70-45cd-86a5-0f5fe9c53fb0.png)
+
+
 
 
