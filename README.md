@@ -141,6 +141,7 @@ group by usertype`
 `select max(tripduration) as Maximum, min(tripduration) as Minimum, avg(tripduration) as Mean
 from hands-344017.Cyclist.full_2019`
 
+All values in seconds
 ![totalMMM](https://user-images.githubusercontent.com/107520777/174689277-5016433d-c4e6-475f-b4ed-957d1a437a31.PNG)
 
 *Customers*
@@ -149,6 +150,7 @@ from hands-344017.Cyclist.full_2019`
 from hands-344017.Cyclist.full_2019
 where usertype = "Customer"`
 
+All values in seconds
 ![customerMMM](https://user-images.githubusercontent.com/107520777/174689310-d2964dbe-62b0-4871-acf7-0fc164c6aa7f.PNG)
 
 *Subscribers*
@@ -157,6 +159,7 @@ where usertype = "Customer"`
 from hands-344017.Cyclist.full_2019
 where usertype = "Subscriber"`
 
+All values in seconds
 ![SubscriberMMM](https://user-images.githubusercontent.com/107520777/174689334-73b19fd7-242a-486a-884e-70477ddd8384.PNG)
 
 
