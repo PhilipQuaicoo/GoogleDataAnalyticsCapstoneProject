@@ -342,6 +342,11 @@ limit 5`
 
 # Visualisation of Data
 
+The comparison is between Customer and Subscriber usertypes and this Pie Chart visualises the fraction they each represent in the entire dataset.
+
+![USERTYPE TRIP SUMMARY, 2019](https://user-images.githubusercontent.com/107520777/174811473-e5982264-2030-4ae7-8c3d-c994de2ba965.png)
+
+
 ***Google sheets was used to plot various graphs of the exported tables to visualize trands in how various usertypes patronize the services. Comparison was of days of the week, months in the year 2019 and hours in a day.***
 
 *The days of the week*
