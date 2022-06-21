@@ -344,6 +344,9 @@ limit 5`
 
 The comparison is between Customer and Subscriber usertypes and this Pie Chart visualises the fraction they each represent in the entire dataset.
 
+![usertypenumtrips](https://user-images.githubusercontent.com/107520777/174813940-79306bd0-1ba2-4383-bfa4-1fdea96afdc7.PNG)
+
+
 ![USERTYPE TRIP SUMMARY, 2019](https://user-images.githubusercontent.com/107520777/174811473-e5982264-2030-4ae7-8c3d-c994de2ba965.png)
 
 
