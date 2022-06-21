@@ -342,6 +342,8 @@ limit 5`
 
 # Visualisation of Data
 
+### Google sheets was used to plot various graphs of the exported tables to visualize trands in how various usertypes patronize the services.***
+
 The comparison is between Customer and Subscriber usertypes and this Pie Chart visualises the fraction they each represent in the entire dataset.
 
 ![usertypenumtrips](https://user-images.githubusercontent.com/107520777/174813940-79306bd0-1ba2-4383-bfa4-1fdea96afdc7.PNG)
@@ -350,7 +352,7 @@ The comparison is between Customer and Subscriber usertypes and this Pie Chart v
 ![USERTYPE TRIP SUMMARY, 2019](https://user-images.githubusercontent.com/107520777/174811473-e5982264-2030-4ae7-8c3d-c994de2ba965.png)
 
 
-***Google sheets was used to plot various graphs of the exported tables to visualize trands in how various usertypes patronize the services. Comparison was of days of the week, months in the year 2019 and hours in a day.***
+***Comparison was based on various usertypes as against days of the week, months in the year 2019 and hours in a day.***
 
 *The days of the week*
 
