@@ -342,7 +342,7 @@ limit 5`
 
 # Visualisation of Data
 
-### Google sheets was used to plot various graphs of the exported tables to visualize trands in how various usertypes patronize the services.***
+### Google sheets was used to plot various graphs of the exported tables to visualize trands in how various usertypes patronize the services.
 
 The comparison is between Customer and Subscriber usertypes and this Pie Chart visualises the fraction they each represent in the entire dataset.
 
@@ -365,6 +365,18 @@ The comparison is between Customer and Subscriber usertypes and this Pie Chart v
 *Hours in a day*
 
 ![TRIP BY HOURS OF THE DAY, 2019](https://user-images.githubusercontent.com/107520777/174809441-be4237c1-6b70-45cd-86a5-0f5fe9c53fb0.png)
+
+
+# Data Insights
+
+1. Cyclistic recorded 3,818,004 rides in all, of which Subscriber rides constitutes a large fraction of 77% (2,937,367 rides), and that of Customers being 23% (880,637 rides). 
+2. Comparing the data of the usertypes to the days in the week, the graph show that Subscriber group usage peaks during the working/Business days (Monday, Tuesday, Wednesday, Thursday and Friday) and dips during the weekend(Saturday and Sunday). On the contrary, the Customer group statistics shows a peak on weekends and dips during Working days.
+3. Again comparing the various usertypes data to the hours in a day, the subscriber Chart shows two peaks. First, around start of business hours and second peak is seen around close of business hours. Again, there is a slight peak during lunch hours. Whiles Customer chart shows a peak value around close of business hours. Coupling this with the insight from the comparison on days of the week, activities around the hours of the day of a Subscriber can be likened to that of a Working Class individual. 
+
+
+
+
+
 
 
 
