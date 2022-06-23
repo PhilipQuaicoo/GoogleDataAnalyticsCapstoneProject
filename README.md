@@ -14,7 +14,7 @@ The director of marketing believes the company’s future success depends on max
 
 # Business Task
 
-The 2019 cyclistic data will be analysed to understand how casual riders and annual members use Cyclistic bikes differently. From these insights, a new marketing strategy will be designed to convert casual riders into annual members.
+The 2019 cyclistic data will be analysed to understand how casual riders and annual members use Cyclistic bikes differently. From these insights, a new marketing strategy will be designed to convert casual riders (Customers) into annual members (Subscribers).
 
 
 # Preparing the Data
@@ -157,9 +157,11 @@ All values in seconds
 
 *Subscribers*
 
-`select max(tripduration) as Maximum, min(tripduration) as Minimum, avg(tripduration) as Mean
+```
+select max(tripduration) as Maximum, min(tripduration) as Minimum, avg(tripduration) as Mean
 from hands-344017.Cyclist.full_2019
-where usertype = "Subscriber"`
+where usertype = "Subscriber"
+```
 
 All values in seconds
 
@@ -167,16 +169,7 @@ All values in seconds
 
 
 
-
-A new table was created with extra columns created to host the extracted month(mm), day name and hour(hh) part of the "start_time" column and also to cast the "tripduration" column as integer and named as "tripduration_int". analysis will be conducted on this new table.
-
-`create table hands-344017.Cyclist.new_full_2019 as
-select *, 
-cast(tripduration as int64) as triduration_int,
-extract(month from start_time) as start_month,
-FORMAT_DATE("%A", start_time) as start_dayname,
-extract(hour from start_time) as start_hour,
-from hands-344017.Cyclist.full_2019`
+==Nulls were not dropped from this data because the analysis was more trip_id based and so we didnt want to risk misrepresenting the numbers by dropping some rows. The count of rides will still be neccesary even if there was values missing in some columns of a particular trip_id.==
 
 ***The following queries are to select the count of rides ordered by Customers and Subscribers for each particular day of the week, for months in the year and the hours in a day. The returned tables will be plotted to visualise the trend in bike rides as they are grouped.***
 
@@ -378,6 +371,11 @@ The comparison is between Customer and Subscriber usertypes and this Pie Chart v
 1. Cyclistic recorded 3,818,004 rides in all, of which Subscriber rides constitutes a large fraction of 77% (2,937,367 rides), and that of Customers being 23% (880,637 rides). 
 2. Comparing the data of the usertypes to the days in the week, the graph show that Subscriber group usage peaks during the working/Business days (Monday, Tuesday, Wednesday, Thursday and Friday) and dips during the weekend(Saturday and Sunday). On the contrary, the Customer group statistics shows a peak on weekends and dips during Working days.
 3. Again comparing the various usertypes data to the hours in a day, the subscriber Chart shows two peaks. First, around start of business hours and second peak is seen around close of business hours. Again, there is a slight peak during lunch hours. Whiles Customer chart shows a peak value around close of business hours. Coupling this with the insight from the comparison on days of the week, activities around the hours of the day of a Subscriber can be likened to that of a Working Class individual. 
+4. The graph for rides per the months shows that rides in summer are the highest whiles winter rides are relatively low. this trend is the same for all user types. This coulb be attributed to the holiday season. As observed from the trend of ride numbers by the hour of the day, majority of rides which belongs to the subscriber user type group have a trend that suggest its users being working class individuals. Should the working class mass go on holidays, this will cause the numbers to drop for those days.
+
+
+# The Way Foreward
+
 
 
 
