@@ -54,15 +54,18 @@ The data processing is done with sql in the bigquery sandbox console. The four (
 
 To get all tables into one table which will contain everything, a new table called "full_2019" is created and the table for the 1st quater (Q1_2019) is inserted first in the creation of the data.
 
-`create table hands-344017.Cyclist.full_2019 as
+```
+create table hands-344017.Cyclist.full_2019 as
 select *
-from hands-344017.Cyclist.Q1_2019`
+from hands-344017.Cyclist.Q1_2019
+```
 
 This process of joining all tables is possible because data in all tables are the same. Data for the remaining tables are added into the "full_2019" table
 
 *for 2nd quarter*
 
-`insert into hands-344017.Cyclist.full_2019 (
+```
+insert into hands-344017.Cyclist.full_2019 (
   trip_id,	
 start_time,	
 end_time,	
@@ -76,11 +79,13 @@ usertype,
 gender,	
 birthyear)
 select * 
-FROM hands-344017.Cyclist.Q2_2019`
+FROM hands-344017.Cyclist.Q2_2019
+```
 
 *for 3rd quarter*
 
-`insert into hands-344017.Cyclist.full_2019 (
+```
+insert into hands-344017.Cyclist.full_2019 (
   trip_id,	
 start_time,	
 end_time,	
@@ -94,11 +99,13 @@ usertype,
 gender,	
 birthyear)
 select * 
-FROM hands-344017.Cyclist.Q3_2019`
+FROM hands-344017.Cyclist.Q3_2019
+```
 
 *for 4th quarter*
 
-`insert into hands-344017.Cyclist.full_2019 (
+```
+insert into hands-344017.Cyclist.full_2019 (
   trip_id,	
 start_time,	
 end_time,	
@@ -112,14 +119,17 @@ usertype,
 gender,	
 birthyear)
 select * 
-FROM hands-344017.Cyclist.Q4_2019`
+FROM hands-344017.Cyclist.Q4_2019
+```
 
 *NB: Nulls will not be dropped through the table since a "not null" will be used in the "Where" statement to affect all tables when required.*
 
 The usertype column is checked to make sure it only contain two distinct inputs
 
- `select distinct usertype
-from hands-344017.Cyclist.full_2019`
+ ```
+ select distinct usertype
+from hands-344017.Cyclist.full_2019
+```
 
 ![distinct_username](https://user-images.githubusercontent.com/107520777/173951885-71a9b49f-ba35-47ff-9098-01badbee511a.PNG)
 
@@ -130,16 +140,20 @@ from hands-344017.Cyclist.full_2019`
 
 ![usertypenumtrips](https://user-images.githubusercontent.com/107520777/174672998-2dd305b5-1882-4345-883f-b1c4e4f10274.PNG)
 
-`select count(trip_id) as num_of_trip, usertype
+```
+select count(trip_id) as num_of_trip, usertype
 from hands-344017.Cyclist.full_2019
-group by usertype`
+group by usertype
+```
 
 ***the maximumn, minimum and mean trip duration is calculated for the number of trips and trips for the vatious usertypes***
 
 *total*
 
-`select max(tripduration) as Maximum, min(tripduration) as Minimum, avg(tripduration) as Mean
-from hands-344017.Cyclist.full_2019`
+```
+select max(tripduration) as Maximum, min(tripduration) as Minimum, avg(tripduration) as Mean
+from hands-344017.Cyclist.full_2019
+```
 
 All values in seconds
 
@@ -147,9 +161,11 @@ All values in seconds
 
 *Customers*
 
-`select max(tripduration) as Maximum, min(tripduration) as Minimum, avg(tripduration) as Mean
+```
+select max(tripduration) as Maximum, min(tripduration) as Minimum, avg(tripduration) as Mean
 from hands-344017.Cyclist.full_2019
-where usertype = "Customer"`
+where usertype = "Customer"
+```
 
 All values in seconds
 
@@ -169,53 +185,65 @@ All values in seconds
 
 
 
-==Nulls were not dropped from this data because the analysis was more trip_id based and so we didnt want to risk misrepresenting the numbers by dropping some rows. The count of rides will still be neccesary even if there was values missing in some columns of a particular trip_id.==
+>Nulls were not dropped from this data because the analysis was more trip_id based and so we didnt want to risk misrepresenting the numbers by dropping some rows. The count of rides will still be neccesary even if there was values missing in some columns of a particular trip_id.
 
 ***The following queries are to select the count of rides ordered by Customers and Subscribers for each particular day of the week, for months in the year and the hours in a day. The returned tables will be plotted to visualise the trend in bike rides as they are grouped.***
 
 *days of the week, Customers*
 
-`select FORMAT_DATE("%A", start_time) as Day_of_Week, count(trip_id) as Number_of_Trips
+```
+select FORMAT_DATE("%A", start_time) as Day_of_Week, count(trip_id) as Number_of_Trips
 from hands-344017.Cyclist.full_2019
 where usertype = "Customer"
-group by FORMAT_DATE("%A", start_time)`
+group by FORMAT_DATE("%A", start_time)
+```
 
 *days of the week, Subscribers*
 
-`select FORMAT_DATE("%A", start_time) as Day_of_Week, count(trip_id) as Number_of_Trips
+```
+select FORMAT_DATE("%A", start_time) as Day_of_Week, count(trip_id) as Number_of_Trips
 from hands-344017.Cyclist.full_2019
 where usertype = "Subscriber"
-group by FORMAT_DATE("%A", start_time)`
+group by FORMAT_DATE("%A", start_time)
+```
 
 
 *months of the year, Customers*
 
+``
 `select FORMAT_DATE("%B", start_time) as month_of_year, count(trip_id) as Number_of_Trips
 from hands-344017.Cyclist.full_2019
 where usertype = "Customer"
-group by FORMAT_DATE("%B", start_time)`
+group by FORMAT_DATE("%B", start_time)
+```
 
 *months of the year, Subscriber*
 
-`select FORMAT_DATE("%B", start_time) as month_of_year, count(trip_id) as Number_of_Trips
+```
+select FORMAT_DATE("%B", start_time) as month_of_year, count(trip_id) as Number_of_Trips
 from hands-344017.Cyclist.full_2019
 where usertype = "Subscriber"
-group by FORMAT_DATE("%B", start_time)`
+group by FORMAT_DATE("%B", start_time)
+```
 
 
 *for hours in a day, Customer*
 
-`select extract(hour from start_time) as Hours, count(trip_id) as Trips_by_Hour
+```
+select extract(hour from start_time) as Hours, count(trip_id) as Trips_by_Hour
 FROM hands-344017.Cyclist.full_2019
 where usertype = "Customer"
-group by extract(hour from start_time)`
+group by extract(hour from start_time)
+```
 
 *for hours in a day, Subscriber*
 
-`select extract(hour from start_time) as Hours, count(trip_id) as Trips_by_Hour
+```
+select extract(hour from start_time) as Hours, count(trip_id) as Trips_by_Hour
 FROM hands-344017.Cyclist.full_2019
 where usertype = "Subscriber"
-group by extract(hour from start_time)`
+group by extract(hour from start_time)
+```
 
 
 
@@ -225,118 +253,142 @@ group by extract(hour from start_time)`
 
 ===Top 5===
 
-`select count(trip_id) as from_station_rides, from_station_name
+```
+select count(trip_id) as from_station_rides, from_station_name
 from hands-344017.Cyclist.full_2019
 group by from_station_name
 order by count(trip_id) desc
-limit 5`
+limit 5
+```
 
 ===Bottom 5===
 
-`select count(trip_id) as from_station_rides, from_station_name
+```
+select count(trip_id) as from_station_rides, from_station_name
 from hands-344017.Cyclist.full_2019
 group by from_station_name
 order by count(trip_id)
-limit 5`
+limit 5
+```
 
 *Customer rides per start station name*
 
 ===Top 5===
 
-`select count(trip_id) as from_station_rides_Cus, from_station_name
+```
+select count(trip_id) as from_station_rides_Cus, from_station_name
 from hands-344017.Cyclist.full_2019
 where usertype = "Customer"
 group by from_station_name
 order by count(trip_id) desc
-limit 5`
+limit 5
+```
 
 ===Bottom 5===
 
-`select count(trip_id) as from_station_rides_Cus, from_station_name
+```
+select count(trip_id) as from_station_rides_Cus, from_station_name
 from hands-344017.Cyclist.full_2019
 where usertype = "Customer"
 group by from_station_name
 order by count(trip_id)
-limit 5`
+limit 5
+```
 
 *Subscriber rides per start station name*
 
 ===Top 5===
 
-`select count(trip_id) as from_station_rides_Sub, from_station_name
+````
+select count(trip_id) as from_station_rides_Sub, from_station_name
 from hands-344017.Cyclist.full_2019
 where usertype = "Subscriber"
 group by from_station_name
 order by count(trip_id) desc
-limit 5`
+limit 5
+```
 
 ===Bottom 5===
 
-`select count(trip_id) as from_station_rides_Sub from_station_name
+```
+select count(trip_id) as from_station_rides_Sub from_station_name
 from hands-344017.Cyclist.full_2019
 where usertype = "Subscriber"
 group by from_station_name
 order by count(trip_id)
-limit 5`
+limit 5
+```
 
 
 *total rides per end station name*
 
 ===Top 5===
 
-`select count(trip_id) as to_station_rides, to_station_name
+```
+select count(trip_id) as to_station_rides, to_station_name
 from hands-344017.Cyclist.full_2019
 group by to_station_name
 order by count(trip_id) desc
-limit 5`
+limit 5
+```
 
 ===Bottom 5===
 
-`select count(trip_id) as to_station_rides, to_station_name
+```
+select count(trip_id) as to_station_rides, to_station_name
 from hands-344017.Cyclist.full_2019
 group by to_station_name
 order by count(trip_id)
-limit 5`
+limit 5
+```
 
 *Customer rides per end station name*
 
 ===Top 5===
 
-`select count(trip_id) as to_station_rides_Cus, to_station_name
+```
+select count(trip_id) as to_station_rides_Cus, to_station_name
 from hands-344017.Cyclist.full_2019
 where usertype = "Customer"
 group by to_station_name
 order by count(trip_id) desc
-limit 5`
+limit 5
+```
 
 ===Bottom 5===
 
-`select count(trip_id) as to_station_rides_Cus, to_station_name
+```
+select count(trip_id) as to_station_rides_Cus, to_station_name
 from hands-344017.Cyclist.full_2019
 where usertype = "Customer"
 group by to_station_name
 order by count(trip_id)
-limit 5`
+limit 5
+```
 
 *Subscriber rides per end station name*
 
 ===Top 5===
 
-`select count(trip_id) as to_station_rides_Sub, to_station_name
+```
+select count(trip_id) as to_station_rides_Sub, to_station_name
 from hands-344017.Cyclist.full_2019
 where usertype = "Subscriber"
 group by to_station_name
 order by count(trip_id) desc
-limit 5`
+limit 5
+```
 
 ===Bottom 5===
 
-`select count(trip_id) as to_station_rides_Sub, to_station_name
+```
+select count(trip_id) as to_station_rides_Sub, to_station_name
 from hands-344017.Cyclist.full_2019
 where usertype = "Subscriber"
 group by to_station_name
 order by count(trip_id)
-limit 5`
+limit 5
+```
 
 
 # Visualisation of Data
