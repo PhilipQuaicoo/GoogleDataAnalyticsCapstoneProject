@@ -142,6 +142,7 @@ group by usertype`
 from hands-344017.Cyclist.full_2019`
 
 All values in seconds
+
 ![totalMMM](https://user-images.githubusercontent.com/107520777/174689277-5016433d-c4e6-475f-b4ed-957d1a437a31.PNG)
 
 *Customers*
@@ -151,6 +152,7 @@ from hands-344017.Cyclist.full_2019
 where usertype = "Customer"`
 
 All values in seconds
+
 ![customerMMM](https://user-images.githubusercontent.com/107520777/174689310-d2964dbe-62b0-4871-acf7-0fc164c6aa7f.PNG)
 
 *Subscribers*
@@ -160,6 +162,7 @@ from hands-344017.Cyclist.full_2019
 where usertype = "Subscriber"`
 
 All values in seconds
+
 ![SubscriberMMM](https://user-images.githubusercontent.com/107520777/174689334-73b19fd7-242a-486a-884e-70477ddd8384.PNG)
 
 
@@ -209,14 +212,14 @@ group by FORMAT_DATE("%B", start_time)`
 
 *for hours in a day, Customer*
 
-`select distinct extract(hour from start_time) as Hours, count(trip_id) as Trips_by_Hour
+`select extract(hour from start_time) as Hours, count(trip_id) as Trips_by_Hour
 FROM hands-344017.Cyclist.full_2019
 where usertype = "Customer"
 group by extract(hour from start_time)`
 
 *for hours in a day, Subscriber*
 
-`select distinct extract(hour from start_time) as Hours, count(trip_id) as Trips_by_Hour
+`select extract(hour from start_time) as Hours, count(trip_id) as Trips_by_Hour
 FROM hands-344017.Cyclist.full_2019
 where usertype = "Subscriber"
 group by extract(hour from start_time)`
@@ -359,15 +362,15 @@ The comparison is between Customer and Subscriber usertypes and this Pie Chart v
 
 *The days of the week*
 
-![TRIPS ON WEEKDAYS, 2019](https://user-images.githubusercontent.com/107520777/174809210-cedb35f0-4a89-4f4d-90e1-d5c4c1fd0e8d.png)
+![TRIPS ON WEKDAYS, 2019](https://user-images.githubusercontent.com/107520777/175179846-0352baf4-e56a-4382-9556-03f56842247b.png)
 
 *Months in the year, 2019*
 
-![TRIPS PER MONTHS, 2019](https://user-images.githubusercontent.com/107520777/174809333-6cf380a0-8d23-438d-b349-4885ca35891e.png)
+![TRIPS PER MONTH, 2019](https://user-images.githubusercontent.com/107520777/175179954-e710a6ff-fed1-4972-ac8b-8fec90204897.png)
 
 *Hours in a day*
 
-![TRIP BY HOURS OF THE DAY, 2019](https://user-images.githubusercontent.com/107520777/174809441-be4237c1-6b70-45cd-86a5-0f5fe9c53fb0.png)
+![TRIP BY HOURS OF THE DAY, 2019](https://user-images.githubusercontent.com/107520777/175179980-78a74c71-a921-474a-858f-6b1933bd82e4.png)
 
 
 # Data Insights
