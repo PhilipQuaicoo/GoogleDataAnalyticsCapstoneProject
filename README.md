@@ -210,8 +210,8 @@ group by FORMAT_DATE("%A", start_time)
 
 *months of the year, Customers*
 
-``
-`select FORMAT_DATE("%B", start_time) as month_of_year, count(trip_id) as Number_of_Trips
+```
+select FORMAT_DATE("%B", start_time) as month_of_year, count(trip_id) as Number_of_Trips
 from hands-344017.Cyclist.full_2019
 where usertype = "Customer"
 group by FORMAT_DATE("%B", start_time)
@@ -299,7 +299,7 @@ limit 5
 
 ===Top 5===
 
-````
+```
 select count(trip_id) as from_station_rides_Sub, from_station_name
 from hands-344017.Cyclist.full_2019
 where usertype = "Subscriber"
