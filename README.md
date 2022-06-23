@@ -122,7 +122,8 @@ select *
 FROM hands-344017.Cyclist.Q4_2019
 ```
 
-*NB: Nulls will not be dropped through the table since a "not null" will be used in the "Where" statement to affect all tables when required.*
+>Nulls were not dropped from this data because the analysis was more trip_id based and so we didnt want to risk misrepresenting the numbers by dropping some rows. The count of rides will still be neccesary even if there was values missing in some columns of a particular trip_id.
+
 
 The usertype column is checked to make sure it only contain two distinct inputs
 
@@ -184,8 +185,6 @@ All values in seconds
 ![SubscriberMMM](https://user-images.githubusercontent.com/107520777/174689334-73b19fd7-242a-486a-884e-70477ddd8384.PNG)
 
 
-
->Nulls were not dropped from this data because the analysis was more trip_id based and so we didnt want to risk misrepresenting the numbers by dropping some rows. The count of rides will still be neccesary even if there was values missing in some columns of a particular trip_id.
 
 ***The following queries are to select the count of rides ordered by Customers and Subscribers for each particular day of the week, for months in the year and the hours in a day. The returned tables will be plotted to visualise the trend in bike rides as they are grouped.***
 
@@ -427,7 +426,13 @@ The comparison is between Customer and Subscriber usertypes and this Pie Chart v
 
 
 # The Way Foreward
-
+From the business task, to get more Customers converting to Subscriber could be achieved by launching a digital campaign strategically by Customer user type's start stations. The best start will be at the top Five (5) stations where Customers started their rides: 
+>Streeter Dr & Grand Ave
+>Lake Shore Dr & Monroe St
+>Millennium Park
+>Michigan Ave & Oak St
+>Lake Shore Dr & North Blvd
+Reasons being, the efficiency in targetting the larger numbers with the same marketing campaign. After this another set of stations could also be targetted. Also another way to encourage the the Subscriber status change whiles on the campaign is by introducing a discount for some months of Subscribtions for customers that changes their status in the campaign season.
 
 
 
