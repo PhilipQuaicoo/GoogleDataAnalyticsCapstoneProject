@@ -427,7 +427,7 @@ The comparison is between Customer and Subscriber usertypes and this Pie Chart v
 
 # The Way Forward
 From the business task, to get more Customers converting to Subscriber could be achieved by launching a digital campaign strategically by Customer user type's start stations. The best start will be at the top Five (5) stations where Customers started their rides: 
->Streeter Dr & Grand Ave, Lake Shore Dr & Monroe St, Millennium Park, Michigan Ave & Oak St, Lake Shore Dr & North Blvd.
+>Streeter Dr & Grand Ave ‖ Lake Shore Dr & Monroe St ‖ Millennium Park ‖ Michigan Ave & Oak St ‖ Lake Shore Dr & North Blvd.
 
 Reasons being, the efficiency in targeting the larger numbers with the same marketing campaign. After this another set of stations could also be targeted. Also another way to encourage the the Subscriber status change whiles on the campaign is by introducing a discount for some months of Subscriptions for customers that changes their status in the campaign season.
 
