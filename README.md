@@ -5,7 +5,7 @@ This repository is the project capstone of the google data analytics certificate
 
 # Introduction
 
-Cyclistic (a fictional comapny) launched a successful bike-share offering. Since then, the program has grown to a fleet of 5,824 bicycles that are geotracked and locked into a  network of 692 stations across Chicago. The bikes can be unlocked from one station and returned to any other station in the system anytime.
+Cyclistic (a fictional company) launched a successful bike-share offering. Since then, the program has grown to a fleet of 5,824 bicycles that are geotracked and locked into a  network of 692 stations across Chicago. The bikes can be unlocked from one station and returned to any other station in the system anytime.
 
 Until now, Cyclistic’s marketing strategy relied on building general awareness and appealing to broad consumer segments. One approach that helped make these things possible was the flexibility of its pricing plans: single-ride passes, full-day passes, and annual memberships. Customers who purchase single-ride or full-day passes are referred to as casual riders or Customers. Customers who purchase annual memberships are Cyclistic members or Subscribers.
 
@@ -19,9 +19,9 @@ The 2019 cyclistic data will be analysed to understand how casual riders and ann
 
 # Preparing the Data
 
-The cyclistic data from 2019 will be used in this particular project. For the purposes of this case study, the datasets are appropriate and will enable you to answer the business questions. The data has been made available by Motivate International Inc. under this[license](https://www.divvybikes.com/data-license-agreement). This is public data that you can use to explore how different customer types are using Cyclistic bikes. But note that data-privacy issues prohibit you from using riders’ personally identifiable information.
+The cyclistic data from 2019 will be used in this particular project. For the purposes of this case study, the datasets are appropriate and will enable you to answer the business questions. The data has been made available by Motivate International Inc. under this [license](https://www.divvybikes.com/data-license-agreement). This is public data that you can use to explore how different customer types are using Cyclistic bikes. But note that data-privacy issues prohibit you from using riders’ personally identifiable information.
 
-The data is in four (4) separate csv files one for each quater of the year. The files are checked to ensure all the data are same for all the files. The columns are same in each file as described as follows;
+The data is in four (4) separate csv files one for each quarter of the year. The files are checked to ensure all the data are same for all the files. The columns are same in each file as described as follows;
 
 trip_id: this is a unique ID for each rider
 
@@ -48,11 +48,11 @@ gender: the gender of the rider
 birthyear: the birth year of the rider in the format yyyy
 
 
-# Processing The Data
+# Processing the Data
 
-The data processing is done with sql in the bigquery sandbox console. The four (4) table files for the 1st, 2nd, 3rd and 4th quarters are uploaded into the bigquery consoles as Q1_2019, Q2_2019, Q3_2019 and Q4_2019 respectively into the the dataset named "cyclistic" under the project "hands-344017".
+The data processing is done with sql in the bigquery sandbox console. The four (4) table files for the 1st, 2nd, 3rd and 4th quarters are uploaded into the bigquery consoles as Q1_2019, Q2_2019, Q3_2019 and Q4_2019 respectively into the dataset named "cyclistic" under the project "hands-344017".
 
-To get all tables into one table which will contain everything, a new table called "full_2019" is created and the table for the 1st quater (Q1_2019) is inserted first in the creation of the data.
+To get all tables into one table which will contain everything, a new table called "full_2019" is created and the table for the 1st quarter (Q1_2019) is inserted first in the creation of the data.
 
 ```
 create table hands-344017.Cyclist.full_2019 as
@@ -122,7 +122,7 @@ select *
 FROM hands-344017.Cyclist.Q4_2019
 ```
 
->Nulls were not dropped from this data because the analysis was more trip_id based and so we didnt want to risk misrepresenting the numbers by dropping some rows. The count of rides will still be neccesary even if there was values missing in some columns of a particular trip_id.
+>Nulls were not dropped from this data because the analysis was more trip_id based and so we didn't want to risk misrepresenting the numbers by dropping some rows. The count of rides will still be necessary even if there was values missing in some columns of a particular trip_id.
 
 
 The usertype column is checked to make sure it only contain two distinct inputs
@@ -147,7 +147,7 @@ from hands-344017.Cyclist.full_2019
 group by usertype
 ```
 
-***the maximumn, minimum and mean trip duration is calculated for the number of trips and trips for the vatious usertypes***
+***the maximum, minimum and mean trip duration is calculated for the number of trips and trips for the various usertypes***
 
 *total*
 
@@ -392,7 +392,7 @@ limit 5
 
 # Visualisation of Data
 
-### Google sheets was used to plot various graphs of the exported tables to visualize trands in how various usertypes patronize the services.
+### Google sheets was used to plot various graphs of the exported tables to visualize trends in how various usertypes patronize the services.
 
 The comparison is between Customer and Subscriber usertypes and this Pie Chart visualises the fraction they each represent in the entire dataset.
 
@@ -422,17 +422,14 @@ The comparison is between Customer and Subscriber usertypes and this Pie Chart v
 1. Cyclistic recorded 3,818,004 rides in all, of which Subscriber rides constitutes a large fraction of 77% (2,937,367 rides), and that of Customers being 23% (880,637 rides). 
 2. Comparing the data of the usertypes to the days in the week, the graph show that Subscriber group usage peaks during the working/Business days (Monday, Tuesday, Wednesday, Thursday and Friday) and dips during the weekend(Saturday and Sunday). On the contrary, the Customer group statistics shows a peak on weekends and dips during Working days.
 3. Again comparing the various usertypes data to the hours in a day, the subscriber Chart shows two peaks. First, around start of business hours and second peak is seen around close of business hours. Again, there is a slight peak during lunch hours. Whiles Customer chart shows a peak value around close of business hours. Coupling this with the insight from the comparison on days of the week, activities around the hours of the day of a Subscriber can be likened to that of a Working Class individual. 
-4. The graph for rides per the months shows that rides in summer are the highest whiles winter rides are relatively low. this trend is the same for all user types. This coulb be attributed to the holiday season. As observed from the trend of ride numbers by the hour of the day, majority of rides which belongs to the subscriber user type group have a trend that suggest its users being working class individuals. Should the working class mass go on holidays, this will cause the numbers to drop for those days.
+4. The graph for rides per the months shows that rides in summer are the highest whiles winter rides are relatively low, which is the same for all user types. This could be attributed to the holiday season. As observed from the trend of ride numbers by the hour of the day, majority of rides which belongs to the subscriber user type group have a trend that suggest its users being working class individuals. Should the working class mass go on holidays, this will cause the numbers to drop for those days.
 
 
-# The Way Foreward
+# The Way Forward
 From the business task, to get more Customers converting to Subscriber could be achieved by launching a digital campaign strategically by Customer user type's start stations. The best start will be at the top Five (5) stations where Customers started their rides: 
->Streeter Dr & Grand Ave
->Lake Shore Dr & Monroe St
->Millennium Park
->Michigan Ave & Oak St
->Lake Shore Dr & North Blvd
-Reasons being, the efficiency in targetting the larger numbers with the same marketing campaign. After this another set of stations could also be targetted. Also another way to encourage the the Subscriber status change whiles on the campaign is by introducing a discount for some months of Subscribtions for customers that changes their status in the campaign season.
+>Streeter Dr & Grand Ave, Lake Shore Dr & Monroe St, Millennium Park, Michigan Ave & Oak St, Lake Shore Dr & North Blvd.
+
+Reasons being, the efficiency in targeting the larger numbers with the same marketing campaign. After this another set of stations could also be targeted. Also another way to encourage the the Subscriber status change whiles on the campaign is by introducing a discount for some months of Subscriptions for customers that changes their status in the campaign season.
 
 
 
